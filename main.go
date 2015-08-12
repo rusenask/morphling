@@ -41,7 +41,18 @@ func readLines(path string) ([]string, error) {
 	}
 	return lines, scanner.Err()
 }
+
 func main() {
+	// looking for option args when starting App
+	// like ./morphling -dict="my_dict.txt"
+	var filename = flag.String("dict", "sample.txt", "Dictionary file location")
+	flag.Parse() // parse the flag
+	// opening dictionary file
+	lines, err := readLines(*filename)
+	if err != nil {
+		log.Fatalf("Failed to read selected file: %s", *filename)
+	}
+
 	// using nano seconds as a seed to create a random number
 	rand.Seed(time.Now().UTC().UnixNano())
 	// bufio.Scanner object reads os.Stdin (actually takes io.Reader as an input
