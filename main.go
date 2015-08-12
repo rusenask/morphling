@@ -24,6 +24,23 @@ var morphs = []string{
 	"lets" + otherWord,
 }
 
+// readLines reads a whole file into memory
+// and returns a slice of its lines.
+func readLines(path string) ([]string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	var lines []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		// appending new lines to string array
+		lines = append(lines, scanner.Text()+otherWord)
+	}
+	return lines, scanner.Err()
+}
 func main() {
 	// using nano seconds as a seed to create a random number
 	rand.Seed(time.Now().UTC().UnixNano())
