@@ -67,7 +67,7 @@ func main() {
 	// it returns false and the loop stops.
 	for s.Scan() {
 		// selects random item from morphs slice
-		t := morphs[rand.Intn(len(morphs))]
+		t := lines[rand.Intn(len(lines))]
 		// bytes from input are stored in Bytes method of the scanner and the
 		// Text method converts []byte slice into a string.
 		// with the random number and current text we use strings.Replace method to
