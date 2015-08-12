@@ -13,19 +13,6 @@ import (
 
 const otherWord = "*"
 
-var morphs = []string{
-	otherWord,
-	otherWord,
-	otherWord,
-	otherWord,
-	otherWord + "app",
-	otherWord + "site",
-	otherWord + "time",
-	"get" + otherWord,
-	"go" + otherWord,
-	"lets" + otherWord,
-}
-
 // readLines reads a whole file into memory
 // and returns a slice of its lines.
 func readLines(path string) ([]string, error) {
@@ -47,7 +34,7 @@ func readLines(path string) ([]string, error) {
 func main() {
 	// looking for option args when starting App
 	// like ./morphling -dict="my_dict.txt"
-	var filename = flag.String("dict", "sample.txt", "Dictionary file location")
+	var filename = flag.String("dict", "dictionary.txt", "Dictionary file location")
 	flag.Parse() // parse the flag
 	// opening dictionary file
 	lines, err := readLines(*filename)
